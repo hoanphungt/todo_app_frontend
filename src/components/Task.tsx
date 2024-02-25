@@ -10,6 +10,7 @@ import styles from "./Task.module.css";
 export function TaskRow({ task }: { task: Task }) {
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(task.text);
+  const [dueDate, setDueDate] = useState(task.dueDate);
 
   const [deleteTask] = useMutation(DELETE_TASK, {
     refetchQueries: [{ query: GET_TASKS }],
@@ -23,6 +24,11 @@ export function TaskRow({ task }: { task: Task }) {
   const onUpdate = (status: boolean) =>
     updateTask({ variables: { id: task.id, status } });
 
+  const textStyle = {
+    color: task.status ? "lightgray" : "black",
+    textDecoration: task.status ? "line-through" : "none",
+  };
+
   return (
     <div className={styles.TaskRow}>
       <input
@@ -31,50 +37,58 @@ export function TaskRow({ task }: { task: Task }) {
         onChange={(e) => onUpdate(e.target.checked)}
       />
       {edit ? (
-        <div>
-          <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <button
-            className={styles.Button}
-            onClick={() => updateTask({ variables: { id: task.id, text } })}
-          >
-            Confirm
-          </button>
-          <button
-            className={styles.Button}
-            onClick={() => {
-              setEdit(false);
-              setText(task.text);
-            }}
-          >
-            Cancel
-          </button>
-        </div>
+        <>
+          <div>
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="date"
+              value={dueDate}
+              min={new Date().toISOString().split("T")[0]}
+              onChange={(e) => setDueDate(e.target.value)}
+            />
+          </div>
+        </>
       ) : (
-        <span
-          style={{
-            color: task.status ? "lightgray" : "black",
-            textDecoration: task.status ? "line-through" : "none",
-          }}
-        >
-          {task.text}
-        </span>
+        <>
+          <span style={textStyle}>{task.text}</span>
+          <span style={textStyle}>
+            {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : ""}
+          </span>
+        </>
       )}
-      <span
-        style={{
-          color: task.status ? "lightgray" : "black",
-          textDecoration: task.status ? "line-through" : "none",
-        }}
-      >
-        {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : ""}
-      </span>
-      <div>
-        <button className={styles.Button} onClick={() => setEdit(!edit)}>
-          Edit
-        </button>
+      <div className={styles.Buttons}>
+        {edit ? (
+          <>
+            <button
+              className={styles.Button}
+              onClick={() =>
+                updateTask({ variables: { id: task.id, text, dueDate } })
+              }
+            >
+              Confirm
+            </button>
+            <button
+              className={styles.Button}
+              onClick={() => {
+                setText(task.text);
+                setDueDate(task.dueDate);
+                setEdit(false);
+              }}
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button className={styles.Button} onClick={() => setEdit(true)}>
+            Edit
+          </button>
+        )}
         <button className={styles.Button} onClick={onDelete}>
           Delete
         </button>

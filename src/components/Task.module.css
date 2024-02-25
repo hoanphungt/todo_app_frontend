@@ -1,12 +1,19 @@
 .TaskRow {
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 4fr 3fr 2fr;
+  grid-template-columns: 1fr 4fr 3fr 3fr;
   margin: 5px 0;
   border-bottom: 1px solid #ccc;
 }
 
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .Button {
+  width: 80px;
   padding: 5px;
   margin: 5px;
   border: none;
