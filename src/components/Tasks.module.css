@@ -1,0 +1,11 @@
+.ListContainer {
+  width: 60%;
+  max-height: 600px;
+  overflow: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}

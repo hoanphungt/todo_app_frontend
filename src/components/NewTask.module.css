@@ -1,0 +1,31 @@
+.Form {
+  width: 60%;
+  padding: 10px;
+  margin: 20px 0;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Input {
+  margin: 10px 0;
+}
+
+.InputField {
+  padding: 5px;
+}
+
+.Button {
+  font-weight: 600;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Error {
+  color: red;
+}
