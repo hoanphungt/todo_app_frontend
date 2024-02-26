@@ -1,5 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { BiCheck, BiEdit, BiTrash, BiX } from "react-icons/bi";
 
 import { Task } from "../type";
 import { GET_TASKS } from "../queries";
@@ -70,8 +71,9 @@ export function TaskRow({ task }: { task: Task }) {
               onClick={() =>
                 updateTask({ variables: { id: task.id, text, dueDate } })
               }
+              title="Confirm"
             >
-              Confirm
+              <BiCheck color="green" />
             </button>
             <button
               className={styles.Button}
@@ -80,17 +82,26 @@ export function TaskRow({ task }: { task: Task }) {
                 setDueDate(task.dueDate);
                 setEdit(false);
               }}
+              title="Cancel"
             >
-              Cancel
+              <BiX color="red" />
             </button>
           </>
         ) : (
-          <button className={styles.Button} onClick={() => setEdit(true)}>
-            Edit
+          <button
+            className={styles.Button}
+            onClick={() => setEdit(true)}
+            title="Edit task"
+          >
+            <BiEdit color="blue" />
           </button>
         )}
-        <button className={styles.Button} onClick={onDelete}>
-          Delete
+        <button
+          className={styles.Button}
+          onClick={onDelete}
+          title="Remove task"
+        >
+          <BiTrash color="red" />
         </button>
       </div>
     </div>
