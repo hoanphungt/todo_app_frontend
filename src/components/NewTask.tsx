@@ -34,6 +34,7 @@ export function NewTask() {
           className={styles.InputField}
           value={task}
           onChange={(e) => setTask(e.target.value)}
+          required
         />
       </div>
       <div className={styles.Input}>

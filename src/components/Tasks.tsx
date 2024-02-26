@@ -9,9 +9,9 @@ import styles from "./Tasks.module.css";
 export function Tasks() {
   const { loading, error, data } = useQuery<GetTasksData>(GET_TASKS);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
-  if (!data) return <p>No data</p>;
+  if (loading) return <p className={styles.Message}>Loading...</p>;
+  if (error) return <p className={styles.Message}>Error : {error.message}</p>;
+  if (!data) return <p className={styles.Message}>No data</p>;
 
   const finishedTasks = data.allTasks.filter((task) => task.status);
   const unfinishedTasks = data.allTasks.filter((task) => !task.status);
