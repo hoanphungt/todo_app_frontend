@@ -29,6 +29,16 @@ npm run dev
 
 Now you can visit [`localhost:5173`](http://localhost:5173/) from your browser to interact with the application.
 
+## Test
+
+The application is tested using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+To run the tests, run the following command:
+
+```bash
+npm run test
+```
+
 ## Contribution
 
 This application is developed by [Hoan Phung](https://github.com/hoanphungt)
