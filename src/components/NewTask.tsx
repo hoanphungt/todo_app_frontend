@@ -48,10 +48,13 @@ export function NewTask() {
           onChange={(e) => setDueDate(e.target.value)}
         />
       </div>
-      <button className={styles.Button} type="submit" disabled={loading}>
-        ADD
-      </button>
-      {error && <p className={styles.Error}>Error: {error.message}</p>}
+      <div>
+        <button className={styles.Button} type="submit" disabled={loading}>
+          ADD
+        </button>
+        {loading && <span>Loading...</span>}
+        {error && <span className={styles.Error}>Error: {error.message}</span>}
+      </div>
     </form>
   );
 }

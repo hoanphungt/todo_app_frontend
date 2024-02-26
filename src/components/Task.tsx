@@ -49,7 +49,7 @@ export function TaskRow({ task }: { task: Task }) {
           <div>
             <input
               type="date"
-              value={dueDate}
+              value={dueDate || ""}
               min={new Date().toISOString().split("T")[0]}
               onChange={(e) => setDueDate(e.target.value)}
             />
