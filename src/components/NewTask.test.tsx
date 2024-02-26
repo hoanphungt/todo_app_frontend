@@ -7,7 +7,6 @@ import { NewTask } from "./NewTask";
 
 const mocks = [
   {
-    // delay: 300,
     request: {
       query: CREATE_TASK,
       variables: { text: "New task", dueDate: "2024-12-31" },
