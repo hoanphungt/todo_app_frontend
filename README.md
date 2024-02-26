@@ -27,6 +27,8 @@ To start the application in development mode, run the following command:
 npm run dev
 ```
 
+Now you can visit [`localhost:5173`](http://localhost:5173/) from your browser to interact with the application.
+
 ## Contribution
 
 This application is developed by [Hoan Phung](https://github.com/hoanphungt)
