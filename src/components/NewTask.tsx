@@ -24,7 +24,7 @@ export function NewTask() {
   };
 
   return (
-    <form className={styles.Form} onSubmit={handleSubmit}>
+    <form className={styles.Form} onSubmit={handleSubmit} data-testid="form">
       <div className={styles.Input}>
         <label htmlFor="task">Task: </label>
         <input
